@@ -13,7 +13,7 @@ let precio1 = parseInt(prompt("Ingrese precio del producto"))
 let precio2 = parseInt(prompt("Ingrese precio del producto 2"))
 
 let resultado = sumaProductos(precio1, precio2)
-alert("Su total es de $" + resultado)
+alert("Su total es de US$ " + resultado)
 
 class producto {
     constructor (id, marca, precio, imagen){
@@ -37,14 +37,12 @@ const producto6 = new producto(6, "Ares", 280, "kwa.jpg")
 
 const stock = []
 stock.push(producto1, producto2, producto3, producto4, producto5, producto6)
-let divStock = document.getElementById("stock")
-function mostrarStock(array){
 
-    divStock.innerHTML = ""
-    array.forEach((producto) => {
+let divStock = document.getElementById("stock")
+    stock.forEach((producto) => {
         let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML = `<div id="${producto.id}" class="card" style="width: 18rem;">
-                                        <img class="card-img-top" style="height: 250px;"src="assets/img/${producto.imagen}" alt="${producto.marca}">
+                                        <img class="card-img-top" style="height: 250px;"src="assets/img/${producto.imagen}" alt="${producto.marca} ">
                                         <div class="card-body">
                                             <h4 class="card-title">${producto.marca}</h4>
                                             <p>Marca: ${producto.marca}</p>
@@ -54,10 +52,4 @@ function mostrarStock(array){
                                     </div>`
     divStock.append(nuevoProducto)
     })
-    let btnCompra = document.getElementsByClassName("btnComprar")
-    for(let compra of btnCompra){
-    compra.addEventListener("click", ()=>{
-        alert("El producto ha sido comprado")
-    })
-}
-}
+

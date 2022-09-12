@@ -1,0 +1,8 @@
+.stockEstilos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.card{
+    margin: 1rem auto;
+    
+}
