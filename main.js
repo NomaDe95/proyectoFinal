@@ -6,14 +6,14 @@ if(ingresoEdad >= 18){
     alert("Usted es menor y no puede continuar")
 }
 
-function sumaProductos(precio1, precio2){
-    return (precio1 + precio2)
-}
-let precio1 = parseInt(prompt("Ingrese precio del producto"))
-let precio2 = parseInt(prompt("Ingrese precio del producto 2"))
+// function sumaProductos(precio1, precio2){
+//     return (precio1 + precio2)
+// }
+// let precio1 = parseInt(prompt("Ingrese precio del producto"))
+// let precio2 = parseInt(prompt("Ingrese precio del producto 2"))
 
-let resultado = sumaProductos(precio1, precio2)
-alert("Su total es de US$ " + resultado)
+// let resultado = sumaProductos(precio1, precio2)
+// alert("Su total es de US$ " + resultado)
 
 class producto {
     constructor (id, marca, precio, imagen){
@@ -47,9 +47,19 @@ let divStock = document.getElementById("stock")
                                             <h4 class="card-title">${producto.marca}</h4>
                                             <p>Marca: ${producto.marca}</p>
                                             <p class="">Precio: usd ${producto.precio}</p>
-                                            <button id="" class="btn btn-outline-success">Agregar al carrito</button>
+                                            <button class="btn btn-outline-success btnCompra">Agregar al carrito</button>
                                         </div>
                                     </div>`
     divStock.append(nuevoProducto)
     })
 
+function alertDevelop(){
+    alert("Página en desarrollo")
+    console.log ("Página en desarrollo")}
+
+let btnCompra = document.getElementsByClassName("btnCompra")
+for(let compra of btnCompra){
+    compra.addEventListener("click", ()=>{
+            alert("Producto agregado al carrito")
+        })
+}
