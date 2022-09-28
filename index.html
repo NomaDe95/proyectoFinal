@@ -15,9 +15,9 @@
         <nav>
             <ul>
                 <a href="">Inicio</a>
-                <a href="/productos.html">Catalago</a>
-                <a href="/carrito.html">Carrito</a>
+                <a href="/productos.html">Catálago</a>
                 <a onclick="alertDevelop()" href="">Cooming soon</a>
+                <a id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModal" class="btn btn-secondary"><i class="fas fa-shopping-cart fa-1x"></i></a>
             </ul>
         </nav>
     </div>
@@ -25,7 +25,30 @@
 
     <div id="stock" class="stockEstilos"></div>
     
-
+    <div class="modal fade" id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+            
+            </div>
+            <div class="row ml-ato">
+                <p id="precioTotal"></p>
+            </div>
+            <div class="modal-footer">
+            
+            
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-success" id="botonFinalizarCompra">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

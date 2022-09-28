@@ -6,14 +6,6 @@ if(ingresoEdad >= 18){
     alert("Usted es menor y no puede continuar")
 }
 
-// function sumaProductos(precio1, precio2){
-//     return (precio1 + precio2)
-// }
-// let precio1 = parseInt(prompt("Ingrese precio del producto"))
-// let precio2 = parseInt(prompt("Ingrese precio del producto 2"))
-
-// let resultado = sumaProductos(precio1, precio2)
-// alert("Su total es de US$ " + resultado)
 
 class producto {
     constructor (id, marca, precio, imagen){
@@ -35,10 +27,20 @@ const producto5 = new producto(5, "Krytac", 490, "krytac.jpg")
 
 const producto6 = new producto(6, "Ares", 280, "kwa.jpg")
 
-const stock = []
-stock.push(producto1, producto2, producto3, producto4, producto5, producto6)
+let productosEnCarrito = []
+let stock = []
+
+if(localStorage.getItem("stock")){
+    stock = JSON.parse(localStorage.getItem("stock"))
+}
+else{
+    stock.push(producto1, producto2, producto3, producto4, producto5, producto6)
+    localStorage.setItem("stock", JSON.stringify(stock))
+}
+console.log(stock)
 
 let divStock = document.getElementById("stock")
+
     stock.forEach((producto) => {
         let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML = `<div id="${producto.id}" class="card" style="width: 18rem;">
@@ -47,19 +49,67 @@ let divStock = document.getElementById("stock")
                                             <h4 class="card-title">${producto.marca}</h4>
                                             <p>Marca: ${producto.marca}</p>
                                             <p class="">Precio: usd ${producto.precio}</p>
-                                            <button class="btn btn-outline-success btnCompra">Agregar al carrito</button>
+                                            <button id="agregarBtn${producto.id}" class="btn btn-outline-success btnCompra">Agregar al carrito</button>
                                         </div>
                                     </div>`
     divStock.append(nuevoProducto)
+
+    let btnAgregar = document.getElementById(`agregarBtn${producto.id}`)
+        console.log(btnAgregar)
+        btnAgregar.addEventListener("click", ()=>{
+            console.log(producto)
+            agregarAlCarrito(producto)
+        })
     })
 
-function alertDevelop(){
-    alert("Página en desarrollo")
-    console.log ("Página en desarrollo")}
 
-let btnCompra = document.getElementsByClassName("btnCompra")
-for(let compra of btnCompra){
-    compra.addEventListener("click", ()=>{
-            alert("Producto agregado al carrito")
-        })
+function agregarAlCarrito(producto){
+    productosEnCarrito.push(producto)
+    console.log(productosEnCarrito)
+}
+
+
+//DOM Carrito
+let botonCarrito = document.getElementById("botonCarrito")
+let modalBody = document.getElementById("modal-body")
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+let parrafoCompra = document.getElementById('precioTotal')
+
+botonCarrito.addEventListener("click", ()=>{
+    cargarProductosCarrito(productosEnCarrito)
+})
+function cargarProductosCarrito(array){
+
+    modalBody.innerHTML = ""
+    array.forEach((productoCarrito)=>{
+
+            modalBody.innerHTML += `
+            <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 250px;">
+            <img class="card-img-top" src="assets/img/${productoCarrito.imagen}" alt="${productoCarrito.marca}">
+            <div class="card-body">
+                    <h4 class="card-title">${productoCarrito.marca}</h4>
+                
+                    <p class="card-text">Precio: usd ${productoCarrito.precio}</p> 
+                    <button class= "btn btn-danger" id="botonEliminar"><i class="fas fa-trash-alt"></i></button>
+            </div>    
+        
+        
+        </div>
+` 
+    })
+    totalCompra(array)
+}
+
+function totalCompra(array){
+    let acumulador = 0
+
+    acumulador = array.reduce((acumulador, productoCarrito)=>{
+        return acumulador + productoCarrito.precio
+    },0)
+    if(acumulador == 0){
+        parrafoCompra.innerHTML = `No se encuentran productos en el carrito`
+    }
+    else{
+        parrafoCompra.innerHTML = `El total es usd ${acumulador}`
+    }
 }
