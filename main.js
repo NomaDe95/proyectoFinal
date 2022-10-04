@@ -1,12 +1,10 @@
+let ingresoEdad = (prompt("Ingrese su edad"))
 
-
-// let ingresoEdad = (prompt("Ingrese su edad"))
-
-// if(ingresoEdad >= 18){
-//     console.log("Es mayor de edad y puede continuar")
-// }else{
-//     alert("Usted es menor y no puede continuar")
-// }
+if(ingresoEdad >= 18){
+    console.log("Es mayor de edad y puede continuar")
+}else{
+    alert("Usted es menor y no puede continuar")
+}
 
 
 class producto {
