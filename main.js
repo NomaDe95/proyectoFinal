@@ -1,10 +1,12 @@
-let ingresoEdad = (prompt("Ingrese su edad"))
 
-if(ingresoEdad >= 18){
-    console.log("Es mayor de edad y puede continuar")
-}else{
-    alert("Usted es menor y no puede continuar")
-}
+
+// let ingresoEdad = (prompt("Ingrese su edad"))
+
+// if(ingresoEdad >= 18){
+//     console.log("Es mayor de edad y puede continuar")
+// }else{
+//     alert("Usted es menor y no puede continuar")
+// }
 
 
 class producto {
@@ -66,6 +68,23 @@ let divStock = document.getElementById("stock")
 function agregarAlCarrito(producto){
     productosEnCarrito.push(producto)
     console.log(productosEnCarrito)
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    // Swal.fire({
+    //     title: "Ha agregado un producto",
+    //     icon: "success",
+    //     timer: 1800,
+
+    // })
+    Toastify({
+        text: "Su producto ha sido agreado al carrito",
+        duration: 3000,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "#fc2c03",
+        },
+    }).showToast();
 }
 
 
@@ -113,3 +132,4 @@ function totalCompra(array){
         parrafoCompra.innerHTML = `El total es usd ${acumulador}`
     }
 }
+

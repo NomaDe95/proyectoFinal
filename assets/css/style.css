@@ -3,11 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
 .navbar{
     display: flex;
     flex-direction: row-reverse;
+    background-color: black
 }
 .navbar ul{
+    color: white;
     display: flex;
 }
 .navbar a{
@@ -22,5 +26,4 @@
 }
 .card{
     margin: 1rem auto;
-    
 }
