@@ -1,4 +1,4 @@
-class producto {
+class Producto {
     constructor (id, marca, precio, imagen){
         this.id = id,
         this.marca = marca,
@@ -6,13 +6,13 @@ class producto {
         this.imagen = imagen}
 }
 
-let stock = []
+
 const cargarProductos = async() =>{
     const response = await fetch("productos.json")
     const data = await response.json()
     console.log(data)
     for (let producto of data){
-        let productoNuevo = new producto(producto.id, producto.marca, producto.precio, producto.imagen)
+        let productoNuevo = new Producto(producto.id, producto.marca, producto.precio, producto.imagen)
         stock.push(productoNuevo)
     }
 

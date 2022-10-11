@@ -36,12 +36,6 @@ function agregarAlCarrito(producto){
     productosEnCarrito.push(producto)
     console.log(productosEnCarrito)
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-    // Swal.fire({
-    //     title: "Ha agregado un producto",
-    //     icon: "success",
-    //     timer: 1800,
-
-    // })
     Toastify({
         text: "Su producto ha sido agreado al carrito",
         duration: 3000,
