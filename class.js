@@ -6,7 +6,7 @@ class Producto {
         this.imagen = imagen}
 }
 
-
+let stock = []
 const cargarProductos = async() =>{
     const response = await fetch("productos.json")
     const data = await response.json()
