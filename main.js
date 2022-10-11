@@ -9,8 +9,10 @@ if(ingresoEdad >= 18){
 
 
 let divStock = document.getElementById("stock")
+function stockProductos(array){
 
-    stock.forEach((producto) => {
+    divStock.innerHTML = ""
+    array.forEach((producto) => {
         let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML = `<div id="${producto.id}" class="card" style="width: 18rem;">
                                         <img class="card-img-top" style="height: 250px;"src="assets/img/${producto.imagen}" alt="${producto.marca} ">
@@ -30,7 +32,7 @@ let divStock = document.getElementById("stock")
             agregarAlCarrito(producto)
         })
     })
-
+}
 
 function agregarAlCarrito(producto){
     productosEnCarrito.push(producto)
