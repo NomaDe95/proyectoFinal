@@ -36,6 +36,7 @@ function agregarAlCarrito(producto){
     productosEnCarrito.push(producto)
     console.log(productosEnCarrito)
     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
     Toastify({
         text: "Su producto ha sido agreado al carrito",
         duration: 3000,
