@@ -43,9 +43,9 @@ function agregarAlCarrito(producto) {
   Toastify({
     text: "Su producto ha sido agreado al carrito",
     duration: 3000,
-    gravity: "bottom", // `top` or `bottom`
-    position: "center", // `left`, `center` or `right`
-    stopOnFocus: true, // Prevents dismissing of toast on hover
+    gravity: "bottom",
+    position: "center", 
+    stopOnFocus: true, 
     style: {
       background: "#fc2c03",
     },
